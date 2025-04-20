@@ -49,9 +49,15 @@ clear_u20ros:
 
 ######################## run ########################
 
-## https://github.com/Liuyvjin/shixi_dual_ur?tab=readme-ov-file
+install_dep:
+	rosdep install --from-paths src --ignore-src -r -y
+.PHONY: install_dep
+
+
+#git clone -b noetic-devel https://github.com/ros-planning/panda_moveit_config.git
 demo:
-	roslaunch dual_ur_moveit_config demo.launch
+	roslaunch panda_moveit_config demo.launch rviz_tutorial:=true
 .PHONY: demo
 
-
+## https://github.com/Liuyvjin/shixi_dual_ur?tab=readme-ov-file
+# roslaunch dual_ur_moveit_config demo.launch

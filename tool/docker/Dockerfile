@@ -23,10 +23,14 @@ RUN apt-get update
 RUN apt install -y ros-noetic-desktop-full
 
 ####### dependence ############
-RUN apt-get install -y ros-noetic-moveit 
 RUN apt-get install -y ros-noetic-industrial-msgs
 RUN apt-get install -y ros-noetic-serial
 RUN apt-get install -y ros-noetic-ur-msgs
+RUN apt-get install -y ros-noetic-moveit ros-noetic-rviz-visual-tools ros-noetic-moveit-visual-tools ros-noetic-franka-description
+
+RUN apt-get install -y python3-yaml python3-rospkg
+
+
 
 EXPOSE 22
 
@@ -45,7 +49,7 @@ ENV ROS_PACKAGE_PATH=/opt/ros/noetic/share
 ENV ROS_ROOT=/opt/ros/noetic/share/ros
 ENV ROS_ETC_DIR=/opt/ros/noetic/etc/ros
 ENV ROSLISP_PACKAGE_DIRECTORIES=/home/ros/catkin_ws/devel/share/common-lisp
-
+ENV ROS_PYTHON_VERSION=3
 
 WORKDIR /home/${MyUser}
 ENV HOME /home/${MyUser}
